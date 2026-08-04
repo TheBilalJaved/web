@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+  <base href="/">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="DueTrack — track shared debts, borrow/pay requests and personal expenses with your family.">
+  <meta name="theme-color" content="#6C63FF">
+  <meta property="og:title" content="DueTrack">
+  <meta property="og:description" content="Family finances, simplified.">
+  <meta property="og:image" content="icons/Icon-512.png">
+  <meta property="og:type" content="website">
+
+  <!-- Open the TLS connections to Firebase/Google before Dart asks for them,
+       so auth and the first Firestore query don't pay for the handshake. -->
+  <link rel="preconnect" href="https://firestore.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://securetoken.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://identitytoolkit.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://accounts.google.com">
+
+  <!-- Google Sign-In (web) needs the Web OAuth client id. Keep in sync
+       with `_webClientId` in lib/services/auth_service.dart. -->
+  <meta name="google-signin-client_id"
+        content="713327632-cb8vt6h248s3jf610b27qip16o1dt024.apps.googleusercontent.com">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="DueTrack">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>DueTrack — Family finances, simplified</title>
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Boot splash: shown until Flutter paints its first frame, so the engine
+       download isn't a blank white page. Matches the in-app splash. -->
+  <style>
+    /* Always light: the app boots in light mode (ThemeController defaults
+       to it), and a dark body would flash through before first paint. */
+    body { margin: 0; background: #F5F5FA; }
+    #boot {
+      position: fixed; inset: 0; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 24px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: #2D2B3D; transition: opacity .3s;
+    }
+    #boot img { width: 96px; height: 96px; border-radius: 24px; }
+    #boot h1 { margin: 0; font-size: 32px; font-weight: 800; letter-spacing: -.5px; }
+    #boot p { margin: -16px 0 0; font-size: 15px; opacity: .6; }
+    #boot .spin {
+      width: 28px; height: 28px; border-radius: 50%;
+      border: 3px solid rgba(108, 99, 255, .2); border-top-color: #6C63FF;
+      animation: spin .8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+  <div id="boot">
+    <img src="icons/Icon-192.png" alt="">
+    <h1>DueTrack</h1>
+    <p>Family finances, simplified</p>
+    <div class="spin"></div>
+  </div>
+  <script>
+    window.addEventListener('flutter-first-frame', function () {
+      var boot = document.getElementById('boot');
+      boot.style.opacity = 0;
+      setTimeout(function () { boot.remove(); }, 300);
+    });
+  </script>
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>
